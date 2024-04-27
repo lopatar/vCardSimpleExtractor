@@ -25,13 +25,15 @@ foreach (var splitBegin in vCards)
         {
             if (vCardLine.StartsWith("FN:"))
             {
-                Console.WriteLine(vCardLine.Replace("FN:", ""));
+                Console.WriteLine("Contact name: {0}", vCardLine.Replace("FN:", ""));
+                continue;
             }
 
             if (vCardLine.StartsWith("TEL;"))
             {
-                Console.WriteLine(vCardLine[(vCardLine.IndexOf(':') + 1)..]);
+                Console.WriteLine("Contact phone number: {0}", vCardLine[(vCardLine.IndexOf(':') + 1)..]);
                 Console.WriteLine("-----------------------------------");
+                break;
             }
         }
     }
